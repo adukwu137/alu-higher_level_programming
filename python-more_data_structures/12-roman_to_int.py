@@ -1,5 +1,13 @@
 #!/usr/bin/python3
+"""
+Technical interview preparation: Roman to Integer Conversion Module
+"""
+
+
 def roman_to_int(roman_string):
+    """
+    Converts a Roman numeral string into its equivalent integer value.
+    """
     if not isinstance(roman_string, str) or roman_string is None:
         return 0
 
@@ -13,13 +21,11 @@ def roman_to_int(roman_string):
 
     for i in range(length):
         current_val = roman_dict.get(roman_string[i], 0)
-        
-        # Break up the line to strictly stay under 79 characters
+
         next_val = 0
         if i + 1 < length:
             next_val = roman_dict.get(roman_string[i + 1], 0)
 
-        # Apply subtraction rule if a larger value follows
         if current_val < next_val:
             total -= current_val
         else:

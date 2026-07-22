@@ -87,7 +87,7 @@ class Square:
 
     def my_print(self):
         """
-        Prints in stdout the square with the character #, offsetting by position.
+        Prints square with # character offsetting by position.
         If size is 0, prints an empty line.
         """
         if self.__size == 0:

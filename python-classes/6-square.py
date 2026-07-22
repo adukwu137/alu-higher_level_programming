@@ -1,15 +1,15 @@
 #!/usr/bin/python3
 """
-This module defines a class Square with size and position properties.
+This module defines a class Square.
 """
 
 
 class Square:
-    """Defines a square by size, position, area, and printing capabilities."""
+    """Defines a square by size, position, area, and print capabilities."""
 
     def __init__(self, size=0, position=(0, 0)):
         """
-        Initializes a Square instance with optional size and position.
+        Initializes a Square instance.
 
         Args:
             size (int): The size of the square (default 0).

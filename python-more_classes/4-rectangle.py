@@ -75,7 +75,7 @@ class Rectangle:
         """Calculate and return the perimeter of the rectangle.
 
         Returns:
-            int: The perimeter of the rectangle, or 0 if width or height is 0.
+            int: The perimeter, or 0 if width or height is 0.
         """
         if self.__width == 0 or self.__height == 0:
             return 0
@@ -93,9 +93,9 @@ class Rectangle:
         return "\n".join(lines)
 
     def __repr__(self):
-        """Return a string representation of the rectangle to recreate it.
+        """Return a string representation to recreate the rectangle.
 
         Returns:
-            str: The string representation formatted as Rectangle(width, height).
+            str: Formatted string as Rectangle(width, height).
         """
         return f"Rectangle({self.__width}, {self.__height})"

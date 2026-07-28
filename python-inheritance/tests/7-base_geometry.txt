@@ -9,14 +9,15 @@ Importing class:
 
 check instantiation:
     >>> bg = BaseGeometry()
-    >>> type(bg) is BaseGeometry
+    >>> isinstance(bg, BaseGeometry)
     True
 
 area():
-    >>> bg.area()
-    Traceback (most recent call last):
-    ...
-    Exception: area() is not implemented
+    >>> try:
+    ...     bg.area()
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [Exception] area() is not implemented
 
 integer_validator():
     >>> try:
@@ -36,49 +37,57 @@ integer_validator("age", 1):
     >>> bg.integer_validator("age", 1)
 
 integer_validator("age", 0):
-    >>> bg.integer_validator("age", 0)
-    Traceback (most recent call last):
-    ...
-    ValueError: age must be greater than 0
+    >>> try:
+    ...     bg.integer_validator("age", 0)
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [ValueError] age must be greater than 0
 
 integer_validator("age", -4):
-    >>> bg.integer_validator("age", -4)
-    Traceback (most recent call last):
-    ...
-    ValueError: age must be greater than 0
+    >>> try:
+    ...     bg.integer_validator("age", -4)
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [ValueError] age must be greater than 0
 
 integer_validator("age", "4"):
-    >>> bg.integer_validator("age", "4")
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
+    >>> try:
+    ...     bg.integer_validator("age", "4")
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] age must be an integer
 
 integer_validator("age", (4,)):
-    >>> bg.integer_validator("age", (4,))
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
+    >>> try:
+    ...     bg.integer_validator("age", (4,))
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] age must be an integer
 
 integer_validator("age", [3]):
-    >>> bg.integer_validator("age", [3])
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
+    >>> try:
+    ...     bg.integer_validator("age", [3])
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] age must be an integer
 
 integer_validator("age", True):
-    >>> bg.integer_validator("age", True)
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
+    >>> try:
+    ...     bg.integer_validator("age", True)
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] age must be an integer
 
 integer_validator("age", (3, 4)):
-    >>> bg.integer_validator("age", (3, 4))
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
+    >>> try:
+    ...     bg.integer_validator("age", (3, 4))
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] age must be an integer
 
 integer_validator("age", None):
-    >>> bg.integer_validator("age", None)
-    Traceback (most recent call last):
-    ...
-    TypeError: age must be an integer
+    >>> try:
+    ...     bg.integer_validator("age", None)
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] age must be an integer

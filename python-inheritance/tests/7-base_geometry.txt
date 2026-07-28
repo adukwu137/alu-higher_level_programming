@@ -11,6 +11,7 @@ Importing class:
 Valid integer validation:
     >>> bg.integer_validator("my_int", 12)
     >>> bg.integer_validator("width", 89)
+    >>> bg.integer_validator("age", 1)
 
 Testing area exception:
     >>> bg.area()
@@ -18,29 +19,75 @@ Testing area exception:
     ...
     Exception: area() is not implemented
 
-Testing TypeError exceptions:
-    >>> bg.integer_validator("name", "John")
+Testing integer_validator with missing arguments:
+    >>> bg.integer_validator()
     Traceback (most recent call last):
     ...
-    TypeError: name must be an integer
+    TypeError: ...
 
-    >>> bg.integer_validator("age", 3.14)
+    >>> bg.integer_validator("age")
+    Traceback (most recent call last):
+    ...
+    TypeError: ...
+
+Testing TypeError exceptions for non-integer types:
+    >>> bg.integer_validator("age", "John")
     Traceback (most recent call last):
     ...
     TypeError: age must be an integer
 
-    >>> bg.integer_validator("is_bool", True)
+    >>> bg.integer_validator("age", "1")
     Traceback (most recent call last):
     ...
-    TypeError: is_bool must be an integer
+    TypeError: age must be an integer
 
-Testing ValueError exceptions:
+    >>> bg.integer_validator("age", 13.5)
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+    >>> bg.integer_validator("age", True)
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+    >>> bg.integer_validator("age", None)
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+    >>> bg.integer_validator("age", [3])
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+    >>> bg.integer_validator("age", (4,))
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+    >>> bg.integer_validator("age", (3, 4))
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+    >>> bg.integer_validator("age", {3, 4})
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+    >>> bg.integer_validator("age", {'a': 1})
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+Testing ValueError exceptions for numbers <= 0:
     >>> bg.integer_validator("age", 0)
     Traceback (most recent call last):
     ...
     ValueError: age must be greater than 0
 
-    >>> bg.integer_validator("distance", -4)
+    >>> bg.integer_validator("age", -4)
     Traceback (most recent call last):
     ...
-    ValueError: distance must be greater than 0
+    ValueError: age must be greater than 0

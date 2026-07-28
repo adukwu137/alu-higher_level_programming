@@ -14,6 +14,11 @@ class TestRectangle(unittest.TestCase):
     def setUp(self):
         Base._Base__nb_objects = 0
 
+    def tearDown(self):
+        for f in ["Rectangle.json", "Square.json", "Base.json"]:
+            if os.path.exists(f):
+                os.remove(f)
+
     def test_instantiation(self):
         r1 = Rectangle(10, 2)
         r2 = Rectangle(2, 10, 1, 2, 12)
@@ -88,13 +93,21 @@ class TestRectangle(unittest.TestCase):
         r1 = Rectangle.create(**{'id': 89, 'width': 1, 'height': 2, 'x': 3, 'y': 4})
         self.assertEqual(str(r1), "[Rectangle] (89) 3/4 - 1/2")
 
-    def test_save_and_load_file(self):
+    def test_save_to_file_none(self):
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_empty(self):
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_rectangles(self):
         r1 = Rectangle(10, 7, 2, 8, 1)
         Rectangle.save_to_file([r1])
         output = Rectangle.load_from_file()
         self.assertEqual(str(r1), str(output[0]))
-        if os.path.exists("Rectangle.json"):
-            os.remove("Rectangle.json")
 
 
 if __name__ == '__main__':

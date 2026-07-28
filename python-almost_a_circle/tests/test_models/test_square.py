@@ -12,6 +12,11 @@ class TestSquare(unittest.TestCase):
     def setUp(self):
         Base._Base__nb_objects = 0
 
+    def tearDown(self):
+        for f in ["Rectangle.json", "Square.json", "Base.json"]:
+            if os.path.exists(f):
+                os.remove(f)
+
     def test_instantiation(self):
         s1 = Square(5)
         s2 = Square(5, 1, 2, 12)
@@ -56,13 +61,21 @@ class TestSquare(unittest.TestCase):
         s1 = Square.create(**{'id': 89, 'size': 1, 'x': 2, 'y': 3})
         self.assertEqual(str(s1), "[Square] (89) 2/3 - 1")
 
-    def test_save_and_load_file(self):
+    def test_save_to_file_none(self):
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_empty(self):
+        Square.save_to_file([])
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_to_file_squares(self):
         s1 = Square(5, 1, 2, 1)
         Square.save_to_file([s1])
         output = Square.load_from_file()
         self.assertEqual(str(s1), str(output[0]))
-        if os.path.exists("Square.json"):
-            os.remove("Square.json")
 
 
 if __name__ == '__main__':

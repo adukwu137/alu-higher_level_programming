@@ -1,13 +1,16 @@
 #!/usr/bin/python3
-"""Module for Square class."""
+"""
+Module containing the Square class.
+Inherits from Rectangle.
+"""
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """Square class inheriting from Rectangle."""
+    """Square class representation inheriting from Rectangle."""
 
     def __init__(self, size, x=0, y=0, id=None):
-        """Constructor for Square."""
+        """Constructor for Square class."""
         super().__init__(size, size, x, y, id)
 
     @property
@@ -17,7 +20,7 @@ class Square(Rectangle):
 
     @size.setter
     def size(self, value):
-        """Setter for size."""
+        """Setter for size, updating both width and height."""
         self.width = value
         self.height = value
 
@@ -28,7 +31,7 @@ class Square(Rectangle):
         )
 
     def update(self, *args, **kwargs):
-        """Updates arguments for Square."""
+        """Updates attributes using positional (*args) or keyword (**kwargs) arguments."""
         attrs = ["id", "size", "x", "y"]
         if args and len(args) != 0:
             for i, arg in enumerate(args):

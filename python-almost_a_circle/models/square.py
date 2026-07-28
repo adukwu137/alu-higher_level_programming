@@ -31,7 +31,7 @@ class Square(Rectangle):
         )
 
     def update(self, *args, **kwargs):
-        """Updates attributes using positional (*args) or keyword (**kwargs) arguments."""
+        """Updates attributes using positional or keyword arguments."""
         attrs = ["id", "size", "x", "y"]
         if args and len(args) != 0:
             for i, arg in enumerate(args):

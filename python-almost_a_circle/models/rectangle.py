@@ -78,7 +78,7 @@ class Rectangle(Base):
         return self.width * self.height
 
     def display(self):
-        """Prints the Rectangle instance with '#' considering x and y offsets."""
+        """Prints Rectangle instance with '#' considering offsets."""
         print("\n" * self.y, end="")
         for _ in range(self.height):
             print(" " * self.x + "#" * self.width)
@@ -90,7 +90,7 @@ class Rectangle(Base):
         )
 
     def update(self, *args, **kwargs):
-        """Updates attributes using positional (*args) or keyword (**kwargs) arguments."""
+        """Updates attributes using positional or keyword arguments."""
         attrs = ["id", "width", "height", "x", "y"]
         if args and len(args) != 0:
             for i, arg in enumerate(args):

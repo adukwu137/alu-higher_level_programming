@@ -19,11 +19,10 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Query all states and delete those containing lowercase 'a'
-    states = session.query(State).all()
+    # Query and delete all states containing 'a' (case-insensitive)
+    states = session.query(State).filter(State.name.like('%a%')).all()
     for state in states:
-        if 'a' in state.name:
-            session.delete(state)
+        session.delete(state)
 
     session.commit()
     session.close()

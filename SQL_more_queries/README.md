@@ -1,3 +1,13 @@
-# SQL - More Queries
+# SQL_more_queries
 
-This project covers advanced SQL queries, user privileges, constraints, and table JOINs.
+## 0. My privileges!
+
+**Mandatory**
+
+Write a script that lists all privileges of the MySQL users `user_0d_1`
+and `user_0d_2` on the server (`localhost`).
+
+### File
+- `0-privileges.sql`
+
+### Usage

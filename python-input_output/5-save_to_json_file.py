@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module contains a function that writes an Object to a text file using JSON.
+Writes an Object to a text file using JSON.
 """
 import json
 

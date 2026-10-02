@@ -1,2 +1,3 @@
-# alu-higher_level_programming
-python repo
+# JavaScript Warm-up
+
+This directory contains introductory JavaScript projects focusing on syntax, variables, conditionals, and semistandard linting rules.
